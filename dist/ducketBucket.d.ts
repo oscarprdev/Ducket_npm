@@ -4,11 +4,11 @@ export declare class DucketBucket implements S3Bucket {
     private apiEndpoint;
     constructor(config: DucketConfig);
     listFiles(): Promise<string[] | void>;
-    getFile({ id }: {
-        id: string;
+    getFile({ name }: {
+        name: string;
     }): Promise<string | void>;
-    uploadFile({ file, id, type, project }: UploadFileInput): Promise<string | void>;
-    deleteFile({ id }: {
-        id: string;
+    uploadFile({ file, name, type, project }: UploadFileInput): Promise<string | void>;
+    deleteFile({ name }: {
+        name: string;
     }): Promise<void>;
 }

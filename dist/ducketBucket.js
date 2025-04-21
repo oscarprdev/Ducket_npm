@@ -11,7 +11,7 @@ export class DucketBucket {
             enumerable: true,
             configurable: true,
             writable: true,
-            value: 'https://ducket.vercel.app/api/ducket'
+            value: 'https://www.ducket.dev/api/ducket'
         });
     }
     async listFiles() {
@@ -33,9 +33,9 @@ export class DucketBucket {
             console.error('Error in listFiles:', error);
         }
     }
-    async getFile({ id }) {
+    async getFile({ name }) {
         try {
-            const response = await fetch(`${this.apiEndpoint}/file/${id}`, {
+            const response = await fetch(`${this.apiEndpoint}/file/${name}`, {
                 method: 'GET',
                 headers: { Authorization: `Bearer ${this.config.apiKey}` },
             });
@@ -49,7 +49,7 @@ export class DucketBucket {
             console.error('Error in getFile:', error);
         }
     }
-    async uploadFile({ file, id, type, project }) {
+    async uploadFile({ file, name, type, project }) {
         try {
             const formData = new FormData();
             if (typeof file === 'string') {
@@ -64,7 +64,7 @@ export class DucketBucket {
             else {
                 throw new Error('Unsupported file type');
             }
-            formData.append('id', id);
+            formData.append('name', name);
             formData.append('type', type);
             if (project)
                 formData.append('project', project);
@@ -83,9 +83,9 @@ export class DucketBucket {
             console.error('Error in uploadFile:', error);
         }
     }
-    async deleteFile({ id }) {
+    async deleteFile({ name }) {
         try {
-            const response = await fetch(`${this.apiEndpoint}/file/${id}`, {
+            const response = await fetch(`${this.apiEndpoint}/file/${name}`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${this.config.apiKey}` },
             });

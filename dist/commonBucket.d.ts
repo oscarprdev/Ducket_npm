@@ -4,13 +4,13 @@ export declare class CommonBucket extends S3Manager implements S3Bucket {
     protected readonly config: S3Config;
     constructor(config: S3Config);
     listFiles(): Promise<string[] | void>;
-    getFile({ id, project }: {
-        id: string;
+    getFile({ name, project }: {
+        name: string;
         project?: string;
     }): Promise<string | void>;
-    uploadFile({ file, id, type, project }: UploadFileInput): Promise<string | void>;
-    deleteFile({ id, project }: {
-        id: string;
+    uploadFile({ file, name, type, project }: UploadFileInput): Promise<string | void>;
+    deleteFile({ name, project }: {
+        name: string;
         project?: string;
     }): Promise<void>;
 }

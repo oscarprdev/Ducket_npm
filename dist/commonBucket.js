@@ -18,9 +18,9 @@ export class CommonBucket extends S3Manager {
             console.error('Error in listFiles:', error);
         }
     }
-    async getFile({ id, project }) {
+    async getFile({ name, project }) {
         try {
-            const key = project ? `${project}/${id}` : id;
+            const key = project ? `${project}/${name}` : name;
             await this.getS3Object(key);
             return key;
         }
@@ -28,9 +28,9 @@ export class CommonBucket extends S3Manager {
             console.error('Error in getFile:', error);
         }
     }
-    async uploadFile({ file, id, type, project }) {
+    async uploadFile({ file, name, type, project }) {
         try {
-            const key = project ? `${project}/${id}` : id;
+            const key = project ? `${project}/${name}` : name;
             await this.uploadObjectS3(file, key, type);
             return key;
         }
@@ -38,9 +38,9 @@ export class CommonBucket extends S3Manager {
             console.error('Error in uploadFile:', error);
         }
     }
-    async deleteFile({ id, project }) {
+    async deleteFile({ name, project }) {
         try {
-            const key = project ? `${project}/${id}` : id;
+            const key = project ? `${project}/${name}` : name;
             await this.deleteObjectS3(key);
         }
         catch (error) {

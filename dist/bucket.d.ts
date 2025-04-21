@@ -5,12 +5,12 @@ export declare class Bucket implements S3Bucket {
     private isDucketConfig;
     listFiles(): Promise<string[] | void>;
     getFile(input: {
-        id: string;
+        name: string;
         project?: string;
     }): Promise<string | void>;
     uploadFile(input: Parameters<S3Bucket['uploadFile']>[0]): Promise<string | void>;
     deleteFile(input: {
-        id: string;
+        name: string;
         project?: string;
     }): Promise<void>;
 }
